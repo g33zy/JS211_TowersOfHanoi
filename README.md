@@ -48,6 +48,27 @@ Dissect the [following game](https://codepen.io/austincoding/pen/YxMBPV/) to get
 1. Build toward the tests.
 1. Use the starter code below:
 
+// Steves game notes/code plan:
+
+// this function printStacks() shows the stacks key value pair labeled in the terminal for node/terminal user input
+
+// as game starts there are empty stacks for disk placement therefore disk can be placed
+// In order for a move to be legal, 1) stack is empty 2) big disks cannot be placed on smaller disk 3) cannot take a disk from an empty stack
+
+// to see how many disks are on a stack use .length()
+
+// to take a disk off use array method (pop, push, shift, slice)
+// to move disks use/add to stack use array method .push() and .pop()
+// to check if disk move is legal use .slice()
+// to add disk to stack we use array method .slice()
+// -1 slice method will always grab the last or only disk no matter what this variable will work 
+
+// cannot move from empty stack : test
+// tests for number of moves, correct and invalid game characters, stack c winner
+// limit the characters the user can input a, b, and c only with my limit() function
+// change the game rules so that only stack c is the winner
+// create a copy of each html and css to mess around with css and see if I can make the game vertical
+
 ### Follow-up Video
 
 <iframe src="https://player.vimeo.com/video/339373348" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>

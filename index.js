@@ -7,7 +7,23 @@
 // * Why are you get a warning in your console? Fix it.
 // * Delete these comment lines!
 
-const stone = null
+// const changed to let, step 1
+let stone = null
+
+let count = 0
+
+// let board = {
+//     red: ['4', '3', '2', '1'],
+//     yellow: [''],
+//     green: ['']
+// };
+
+function countMoves() {
+  count ++
+  document.getElementById('count').innerHTML = count
+
+  
+}
 
 // this function is called when a row is clicked. 
 // Open your inspector tool to see what is being captured and can be used.
@@ -16,27 +32,97 @@ const selectRow = (row) => {
   
   console.log("Yay, we clicked an item", row)
   console.log("Here is the stone's id: ", row.id)
-  console.log("Here is the stone's data-size: ", currentRow)
+  console.log("Here is the stone's data-row: ", currentRow)
 
-  pickUpStone(row.id)
+  if(!stone) {
+    pickUpStone(row.id)
+  } else {
+    dropStone(row.id)
+    countMoves()
+  }
+
+  
+  checkForWin(row)
+
+
+  
 } 
 
 // this function can be called to get the last stone in the stack
 // but there might be something wrong with it...
 const pickUpStone = (rowID) => {
   const selectedRow = document.getElementById(rowID);
-  stone = selectedRow.removeChild(selectedRow.lastChild);
+  stone = selectedRow.lastElementChild;
+  selectedRow.removeChild(stone)
   console.log(stone)
 }
+
 
 // You could use this function to drop the stone but you'll need to toggle between pickUpStone & dropStone
 // Once you figure that out you'll need to figure out if its a legal move...
 // Something like: if(!stone){pickupStone} else{dropStone}
 
-const dropStone = (rowID, stone) => {
-  document.getElementById(rowID).appendChild(stone)
+const dropStone = (rowID) => {
+   // document.getElementById(rowID).appendChild(stone)      short version
+
+  let currentRow = document.getElementById(rowID);
+ 
+  let lastStone = currentRow.lastElementChild;
+
+ 
+// if there is no stone then place stone
+ if(!lastStone) {                  
+  currentRow.appendChild(stone)
+ } else {
+  // convert string to number for comparison of attribute data-size
+  let heldStone = parseInt(stone.getAttribute('data-size'))
+  let sittingStone = parseInt(lastStone.getAttribute('data-size'))
+  // if sitting stone is greater than held stone then place stone
+  if(sittingStone > heldStone) {
+    currentRow.appendChild(stone)
+  } else {
+    window.alert('Illegal Move!')
+    return
+  }
+ }
+ 
   stone = null
 }
 
-// * Remember you can use your logic from 'main.js' to maintain the rules of the game. But how? Follow the flow of data just like falling dominoes.
+const checkForWin = (row) => {
+  if(row.id === 'bottom-row') {
+    if(row.childElementCount === 4) {
+      window.alert('Winner!')
 
+    }
+  }
+ }
+
+
+
+// const resetBoard = () => {
+  
+//   window.alert("The board was reset!")
+
+  
+//   const towers = document.getElementsByClassName("stone")
+  
+ 
+//   for (i=0; i<towers.length; i++) {
+//     console.log(towers[i])
+//     towers[i].innerHTML = null
+//   }
+//   board = {
+//     red: [4, 3, 2, 1],
+//     yellow: [],
+//     green: []
+// };
+//   };
+
+//   if(row.id === 'bottom-row') {
+//     if(row.childElementCount === 4) {
+     
+
+//     }
+  
+// }
