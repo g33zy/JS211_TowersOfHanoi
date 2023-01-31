@@ -66,6 +66,7 @@ Dissect the [following game](https://codepen.io/austincoding/pen/YxMBPV/) to get
 // cannot move from empty stack : test
 // tests for number of moves, correct and invalid game characters, stack c winner
 // limit the characters the user can input a, b, and c only with my limit() function
+// checkForWin() .length() winning condition b or c have 4 disks, would like to get it to only c for win
 // change the game rules so that only stack c is the winner
 // create a copy of each html and css to mess around with css and see if I can make the game vertical
 
