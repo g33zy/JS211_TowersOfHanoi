@@ -93,6 +93,7 @@ const checkForWin = (row) => {
   if(row.id === 'bottom-row') {
     if(row.childElementCount === 4) {
       window.alert('Winner!')
+    
 
     }
   }
@@ -100,29 +101,15 @@ const checkForWin = (row) => {
 
 
 
-// const resetBoard = () => {
+const resetBoard = () => {
+  document.getElementById('top-row').appendChild(document.getElementById('4'))
+  document.getElementById('top-row').appendChild(document.getElementById('3'))
+  document.getElementById('top-row').appendChild(document.getElementById('2'))
+  document.getElementById('top-row').appendChild(document.getElementById('1'))
   
-//   window.alert("The board was reset!")
+count = 0
+
+document.getElementById('count').innerHTML = '0'
 
   
-//   const towers = document.getElementsByClassName("stone")
-  
- 
-//   for (i=0; i<towers.length; i++) {
-//     console.log(towers[i])
-//     towers[i].innerHTML = null
-//   }
-//   board = {
-//     red: [4, 3, 2, 1],
-//     yellow: [],
-//     green: []
-// };
-//   };
-
-//   if(row.id === 'bottom-row') {
-//     if(row.childElementCount === 4) {
-     
-
-//     }
-  
-// }
+}
